@@ -14,7 +14,7 @@ const ArticleTemplate = ({ data }) => (
 export default ArticleTemplate
 
 export const query = graphql`
-  query ArticleTemplate($id: String!) {
+  query ArticleTemplate($id: String!, sort: "id:asc") {
     strapiArticle(id: {eq: $id}) {
       title
       content
