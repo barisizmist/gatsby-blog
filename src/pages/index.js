@@ -13,6 +13,7 @@ const IndexPage = ({ data }) => (
           <h2>
             <Link to={`/${document.node.id}`}>{document.node.title}</Link>
           </h2>
+          <h4>{document.node.subtitle}</h4>
           <p>{document.node.content}</p>
         </li>
       ))}
@@ -30,6 +31,7 @@ export const pageQuery = graphql`
         node {
           id
           title
+          subtitle
           content
         }
       }
