@@ -28,7 +28,7 @@ export const pageQuery = graphql`
   query IndexQuery {
     allStrapiArticle {
       edges {
-        node {
+        node(sort: "id:asc") {
           id
           title
           subtitle
