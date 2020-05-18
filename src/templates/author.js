@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
 import Layout from '../components/layout'
+import Img from 'gatsby-image'
 
 const UserTemplate = ({ data }) => (
   <Layout>
@@ -12,7 +13,8 @@ const UserTemplate = ({ data }) => (
             <Link to={`/Article_${article.id}`}>{article.title}</Link>
           </h2>
           <h4>{article.subtitle}</h4>
-          <p>{article.content}</p>
+          <p>{article.contentfull}</p>
+          <Img fixed={article.image.childImageSharp.fixed} />
         </li>
       ))}
     </ul>
@@ -29,8 +31,15 @@ export const query = graphql`
       articles {
         id
         title
-        content
+        contentfull
         subtitle
+        image{
+          childImageSharp{
+            fixed(width: 200, height: 125) {
+              ...GatsbyImageSharpFixed
+            }
+          }
+        }
       }
     }
   }
