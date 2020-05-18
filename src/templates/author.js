@@ -2,6 +2,7 @@ import React from 'react'
 import { Link, graphql } from 'gatsby'
 import Layout from '../components/layout'
 import Img from 'gatsby-image'
+import ReactMarkdown from 'react-markdown'
 
 const UserTemplate = ({ data }) => (
   <Layout>
@@ -13,7 +14,7 @@ const UserTemplate = ({ data }) => (
             <Link to={`/Article_${article.id}`}>{article.title}</Link>
           </h2>
           <h4>{article.subtitle}</h4>
-          <p>{article.contentfull}</p>
+          <ReactMarkdown source={article.contentfull} />
           <Img fixed={article.image.childImageSharp.fixed} />
         </li>
       ))}
