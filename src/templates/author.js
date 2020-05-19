@@ -3,6 +3,7 @@ import { Link, graphql } from 'gatsby'
 import Layout from '../components/layout'
 import Img from 'gatsby-image'
 import ReactMarkdown from 'react-markdown'
+import '../styles/global.css'
 
 const UserTemplate = ({ data }) => (
   <Layout>
@@ -13,9 +14,9 @@ const UserTemplate = ({ data }) => (
           <h2>
             <Link to={`/Article_${article.id}`}>{article.title}</Link>
           </h2>
-          <h4>{article.subtitle}</h4>
-          <ReactMarkdown source={article.contentfull} />
           <Img fixed={article.image.childImageSharp.fixed} />
+          <ReactMarkdown className="articleContent indexArticle" source={article.contentfull.substring(0, 300).concat("...")} />
+          <Link to={`/Article_${article.id}`}>Read More</Link>
         </li>
       ))}
     </ul>
@@ -33,7 +34,6 @@ export const query = graphql`
         id
         title
         contentfull
-        subtitle
         image{
           childImageSharp{
             fixed(width: 200, height: 125) {

@@ -3,6 +3,7 @@ import { Link, graphql } from 'gatsby'
 import Layout from '../components/layout'
 import Img from "gatsby-image"
 import ReactMarkdown from "react-markdown"
+import '../styles/global.css'
 
 const IndexPage = ({ data }) => (
   <Layout>
@@ -15,9 +16,9 @@ const IndexPage = ({ data }) => (
           <h2>
             <Link to={`/${document.node.id}`}>{document.node.title}</Link>
           </h2>
-          <h4>{document.node.subtitle}</h4>
-          <ReactMarkdown source={document.node.contentfull} />
           <Img fixed={document.node.image.childImageSharp.fixed} />
+          <ReactMarkdown className="indexArticle" source={document.node.contentfull.substring(0, 500).concat("...")} escapeHtml={false} />
+          <Link to={`/${document.node.id}`}>Read More</Link>
         </li>
       ))}
     </ul>
@@ -29,7 +30,7 @@ export default IndexPage
 
 export const pageQuery = graphql`  
   query IndexQuery {
-    allStrapiArticle {
+    allStrapiArticle(sort: {fields: id, order: ASC}) {
       edges {
         node {
           id
