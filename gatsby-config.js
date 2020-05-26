@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `My first gatsby site`,
+    title: `Blog Sitem`,
     description: `Gatsby blog with strapi cms`,
-    author: `@gatsbyjs`,
+    author: `Barış Taş`,
   },
   plugins: [
     'gatsby-plugin-react-helmet',

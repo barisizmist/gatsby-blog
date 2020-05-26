@@ -16,7 +16,7 @@ const UserTemplate = ({ data }) => (
           </h2>
           <Img fixed={article.image.childImageSharp.fixed} />
           <ReactMarkdown className="articleContent indexArticle" source={article.contentfull.substring(0, 300).concat("...")} />
-          <Link to={`/Article_${article.id}`}>Read More</Link>
+          <Link to={`/Article_${article.id}`}>Devamını oku</Link>
         </li>
       ))}
     </ul>
